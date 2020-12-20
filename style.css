@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=JetBrains+Mono');
+
+body {
+  font-family: 'JetBrains Mono', sans-serif;
+  background: #1f1b22;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  width: 60px;
+  height: 100%;
+  background: #121212;
+  transition: 0.4s;
+  overflow: hidden;
+}
+
+.sidebar:hover {
+  width: 250px;
+}
+
+.sidebar ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.sidebar ul li a:hover {
+  background: #bb86fc;
+  color: #121212;
+}
+
+.sidebar ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+}
+
+.sidebar ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: #f5f5f5;
+}
+
+.sidebar ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+
+.sidebar ul li a .icon .fas {
+  font-size: 24px;
+}
+
+.sidebar ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}

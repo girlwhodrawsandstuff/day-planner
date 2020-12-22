@@ -17,11 +17,13 @@ db = SQLAlchemy(app)
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     """Sign up user"""
+    session.clear()
     """TODO"""
     
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """Log user in"""
+    session.clear()
     """TODO"""
 
 @app.route('/')

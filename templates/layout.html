@@ -1,48 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head> 
+  <head>
     <meta charset="utf=8">
-    <title>{% block title %} {% endblock %}</title>
-    <link rel="stylesheet" href="/static/style.css"> 
+    <title>Day Planner</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/static/style.css" />
+
     <!-- Required to import fontawesome icons -->
-    <script src="https://kit.fontawesome.com/c20afc23a5.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/c20afc23a5.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body>
-    <div class="sidebar">
-      <ul>
-        <li>
-          <a href="#">
-            <span class="icon"><i class="fas fa-home"></i></span>
-            <span class="title">Home</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="icon"><i class="fas fa-user-astronaut"></i></span>
-            <span class="title">Profile</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="icon"><i class="fas fa-calendar-alt"></i></span>
-            <span class="title">Calendar</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="icon"><i class="fas fa-clock"></i></span>
-            <span class="title">Reminders</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="icon"><i class="fas fa-edit"></i></span>
-            <span class="title">Notes</span>
-          </a>
-        </li>
-      </ul>
-      
-    </div>
+    <nav class="sidebar">
+      <div>
+        <ul>
+          <li>
+            <a href="/tasks">
+              <span class="icon"><i class="fas fa-edit"></i></span>
+              <span class="title">Tasks</span>
+            </a>
+          </li>
+          <li>
+            <a href="/settings">
+              <span class="icon"><i class="fas fa-cog"></i></span>
+              <span class="title">Calendar</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>{% block main %}{% endblock %}</main>
   </body>
 </html>

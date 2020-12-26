@@ -3,13 +3,40 @@
 {% block stylesheet %}  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='login.css')}}"/> {% endblock %}
 
 {% block main %} 
+
     <form class="login-form" action="/login" method="post">
-        <div>
+        <!-- username -->
+        <div class="primary-inp">
             <input autocomplete="off" autofocus name="username" placeholder="Username" type="text">
         </div>
+        <!-- password -->
         <div>
             <input name="password" placeholder="Password" type="password">
         </div>
-        <button type="submit">Login</button>
+        <!-- button -->
+        <div>
+            <button id="submit" type="submit">Login</button>
+        </div>
     </form>
+
+    <script>
+        function manage(text) {
+            var btn = document.getElementById('submit');
+            var element = document.getElementsByTagName('input');
+
+            // Loop through each element.
+            for (i = 0; i < element.length; i++) {
+
+                // Check the element type.
+                if ((element[i].type == 'text' || element[i].type == 'password') && element[i].value == '') {
+                    btn.disabled = true;    // Disable the button.
+                    return false;
+                }
+                else {
+                    btn.disabled = false;   // Enable the button.
+                }
+            }
+        }
+    </script>
+
 {% endblock %}

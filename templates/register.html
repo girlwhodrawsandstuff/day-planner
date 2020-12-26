@@ -1,29 +1,30 @@
 {% extends 'layout.html' %}
 
 {% block main %}
+
     <form action="/register" method="post">
 
-    <!-- username -->
-    <div>
-        <input type="text" id="name" name="username" placeholder="Username" autocomplete="off" autofocus onkeyup="manage(this)"/>
-    </div>
+        <!-- username -->
+        <div>
+            <input type="text" id="name" name="username" placeholder="Username" autocomplete="off" autofocus onkeyup="manage(this)"/>
+        </div>
 
-    <!-- password -->
-    <div>
-        <input type="password" id="pass" name="password" placeholder="Password" onkeyup="manage(this)"/>
-    </div>
+        <!-- password -->
+        <div>
+            <input type="password" id="pass" name="password" placeholder="Password" onkeyup="manage(this)"/>
+        </div>
 
-    <!-- confirmation -->
-    <div>
-        <input type="password" id="pass1" name="confirmation" placeholder="Confirm Password" onkeyup="manage(this)"/>
-    </div>
+        <!-- confirmation -->
+        <div>
+            <input type="password" id="pass1" name="confirmation" placeholder="Confirm Password" onkeyup="manage(this)"/>
+        </div>
 
-    <!-- button -->
-    <button id="submit" type="submit" disabled>Register</button>
+        <!-- button -->
+        <button id="submit" type="submit" disabled>Register</button>
 
     </form>
 
-    <script>
+   <script>
         function manage(text) {
             var btn = document.getElementById('submit');
             var element = document.getElementsByTagName('input');
@@ -33,13 +34,14 @@
 
                 // Check the element type.
                 if ((element[i].type == 'text' || element[i].type == 'password') && element[i].value == '') {
-                    btn.disabled = true;    // Disable the button.
+                    btn.disabled = true;    
                     return false;
                 }
                 else {
-                    btn.disabled = false;   // Enable the button.
+                    btn.disabled = false;  
                 }
             }
         }
     </script>
+
 {% endblock %}

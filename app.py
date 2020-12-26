@@ -2,7 +2,6 @@ from flask import Flask, render_template, redirect, request, session
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from tempfile import mkdtemp
-from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 
 app = Flask(__name__)
 
@@ -14,25 +13,29 @@ Session(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///planner.db'
 db = SQLAlchemy(app)
 
+@app.route("/")
+def index():
+    """Redirect user"""
+    return redirect("/login")
+
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     """Sign up user"""
     session.clear()
-    """TODO"""
     
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """Log user in"""
+    # forget any user_id
     session.clear()
-    """TODO"""
+    return render_template("login.html")
+    
 
-@app.route('/')
-@login_required
-def index():
-    return render_template('index.html')
+@app.route('/tasks')
+def tasks():
+    return render_template('tasks.html')
     
 @app.route("/settings")
-@login_required
 def settings():
     """Change password"""
     """TODO"""

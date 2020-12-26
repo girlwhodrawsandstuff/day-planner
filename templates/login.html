@@ -1,3 +1,15 @@
-{% extends 'layout.html' %}
+{% extends 'layout.html' %} 
 
-{% block main %}{% endblock %}
+{% block stylesheet %}  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='login.css')}}"/> {% endblock %}
+
+{% block main %} 
+    <form class="login-form" action="/login" method="post">
+        <div>
+            <input autocomplete="off" autofocus name="username" placeholder="Username" type="text">
+        </div>
+        <div>
+            <input name="password" placeholder="Password" type="password">
+        </div>
+        <button type="submit">Login</button>
+    </form>
+{% endblock %}

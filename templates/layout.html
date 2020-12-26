@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf=8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf=8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <title>Day Planner</title>
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/style.css"/>
+    {% block stylesheet %} {% endblock %}
 
     <!-- Required to import fontawesome icons -->
     <script
@@ -16,31 +20,42 @@
   </head>
 
   <body>
-    <nav class="sidebar">
-      <div>
-        <ul>
-          <li>
-            <a href="/tasks">
-              <span class="icon"><i class="fas fa-edit"></i></span>
-              <span class="title">Tasks</span>
-            </a>
-          </li>
-          <li>
-            <a href="/settings">
-              <span class="icon"><i class="fas fa-cog"></i></span>
-              <span class="title">Calendar</span>
-            </a>
-          </li>
-          <li class="logout">
-            <a href="/logout">
-              <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
-              <span class="title">Logout</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
+      <nav class="top-sidebar">
+        <h1>DAY PLANNER</h1>
+        <div>
+          <a href="/register">
+            <button class="register-btn">Register</button>
+          </a>
+          <a href="/login">
+            <button class="login-btn">Login</button>
+          </a>
+        </div>
+      </nav>
+      <nav class="sidebar">
+        <div>
+          <ul>
+            <li>
+              <a href="/tasks">
+                <span class="icon"><i class="fas fa-edit"></i></span>
+                <span class="title">Tasks</span>
+              </a>
+            </li>
+            <li>
+              <a href="/settings">
+                <span class="icon"><i class="fas fa-cog"></i></span>
+                <span class="title">Calendar</span>
+              </a>
+            </li>
+            <li class="logout">
+              <a href="/logout">
+                <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                <span class="title">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    
     <main>{% block main %}{% endblock %}</main>
   </body>
 </html>

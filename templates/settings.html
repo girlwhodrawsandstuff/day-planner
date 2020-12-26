@@ -1,3 +1,42 @@
 {% extends 'layout.html' %}
 
-{% block main %}{% endblock %}
+{% block main %}
+    <form action="/settings" method="post">
+        <!-- Old Password -->
+        <div>
+            <input type="password" id="oldpass" name="old" placeholder="Old Password" autocomplete="off" autofocus onkeyup="manage(this)"/>
+        </div>
+
+        <!-- New Password -->
+        <div>
+            <input type="password" id="pass" name="new" placeholder="New Password" onkeyup="manage(this)"/>
+        </div>
+
+        <!-- Confirm Password -->
+        <div>
+            <input type="password" id="pass1" name="confirmation" placeholder="Confirm Password" onkeyup="manage(this)"/>
+        </div>
+
+        <!-- Button -->
+        <button id="submit" type="submit" disabled>Change Password</button>
+    </form>
+
+    <script>
+        function manage(text) {
+            var btn = document.getElementById('submit');
+            var element = document.getElementByTagName('input');
+
+            // loop through each tagname 
+            for (i = 0; i < element.length; i++) {
+                if (element[i].type) == 'password' && element[i].value == '') {
+                    btn.disabled = true;
+                    return false;
+                }
+                else {
+                    btn.disabled = false;
+                }
+            }
+        }
+    </script>
+    
+{% endblock %}

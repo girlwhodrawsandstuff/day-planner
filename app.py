@@ -26,6 +26,8 @@ def register():
     if request.method == "GET":
         return render_template("register.html")
     
+    """TODO"""
+    
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """Log user in"""
@@ -45,17 +47,19 @@ def login():
     
     # user reached route via GET (as by clicking a link or via redirect)
     else:
-        return render_template("login.html")
+        return render_template('login.html')
     
 
 @app.route('/tasks')
 def tasks():
+    """User tasks"""
     return render_template('tasks.html')
     """TODO"""
     
 @app.route("/settings")
 def settings():
     """Change password"""
+    return render_template('settings.html')
     """TODO"""
     
 @app.route("/logout")

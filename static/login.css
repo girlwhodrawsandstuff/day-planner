@@ -2,9 +2,10 @@ div {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0px;
+    padding: 10px;
 }
 
-.primary-inp {
-    padding: 0px;
+input {
+    margin: 8px 0px;
+    box-sizing: border-box;
 }

@@ -1,6 +1,12 @@
 {% extends 'layout.html' %}
 
+{% block stylesheet %}  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='settings.css')}}"/> {% endblock %}
+
 {% block main %}
+    <div>
+        <h1>Settings</h1>
+    </div>
+
     <form action="/settings" method="post">
         <!-- Old Password -->
         <div>
@@ -18,25 +24,10 @@
         </div>
 
         <!-- Button -->
-        <button id="submit" type="submit" disabled>Change Password</button>
+        <div>
+            <button id="submit" type="submit" disabled>Change Password</button>
+        </div>
+
     </form>
-
-    <script>
-        function manage(text) {
-            var btn = document.getElementById('submit');
-            var element = document.getElementByTagName('input');
-
-            // loop through each tagname 
-            for (i = 0; i < element.length; i++) {
-                if (element[i].type) == 'password' && element[i].value == '') {
-                    btn.disabled = true;
-                    return false;
-                }
-                else {
-                    btn.disabled = false;
-                }
-            }
-        }
-    </script>
     
 {% endblock %}

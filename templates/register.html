@@ -1,47 +1,35 @@
 {% extends 'layout.html' %}
 
+{% block stylesheet %}  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='register.css')}}"/> {% endblock %}
+
 {% block main %}
+
+    <div>
+        <h1>Register</h1>
+    </div>
 
     <form action="/register" method="post">
 
         <!-- username -->
-        <div class="primary-inp">
+        <div>
             <input type="text" id="name" name="username" placeholder="Username" autocomplete="off" autofocus onkeyup="manage(this)"/>
         </div>
 
         <!-- password -->
-        <div class="primary-inp">
+        <div>
             <input type="password" id="pass" name="password" placeholder="Password" onkeyup="manage(this)"/>
         </div>
 
         <!-- confirmation -->
-        <div class="primary-inp">
+        <div>
             <input type="password" id="pass1" name="confirmation" placeholder="Confirm Password" onkeyup="manage(this)"/>
         </div>
 
         <!-- button -->
-        <button id="submit" type="submit" disabled>Register</button>
+        <div>
+            <button id="submit" type="submit" disabled>Register</button>
+        </div>
 
     </form>
-
-   <script>
-        function manage(text) {
-            var btn = document.getElementById('submit');
-            var element = document.getElementsByTagName('input');
-
-            // Loop through each element.
-            for (i = 0; i < element.length; i++) {
-
-                // Check the element type.
-                if ((element[i].type == 'text' || element[i].type == 'password') && element[i].value == '') {
-                    btn.disabled = true;    
-                    return false;
-                }
-                else {
-                    btn.disabled = false;  
-                }
-            }
-        }
-    </script>
 
 {% endblock %}

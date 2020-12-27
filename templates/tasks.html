@@ -1,3 +1,21 @@
 {% extends 'layout.html' %}
 
-{% block main %}{% endblock %}
+{% block main %}
+
+    <div>
+        <h1>Tasks</h1>
+        <div>
+            <input type="text" placeholder="Add your task"></input>
+            <button><i class="fas fa-plus"></i></button>
+        </div>
+        <ul>
+            <li>Do this<span><i class="fas fa-trash"></i></span></li>
+            <li>Do that<span><i class="fas fa-trash"></i></span></li>
+        </ul>
+        <div class="footer">
+            <span>You have 2 pending tasks</span>
+            <button>Clear All</button>
+        </div>
+    </div>
+
+{% endblock %}

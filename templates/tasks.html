@@ -1,14 +1,16 @@
 {% extends 'layout.html' %}
 
+{% block stylesheet %}  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='tasks.css')}}"/> {% endblock %}
+
 {% block main %}
 
-    <div>
-        <h1>Tasks</h1>
-        <div>
+    <div class="tasks-main">
+        <h1 class="tasks-header">Tasks</h1>
+        <div class="input-field">
             <input type="text" placeholder="Add your task"></input>
             <button><i class="fas fa-plus"></i></button>
         </div>
-        <ul>
+        <ul class="list-items">
             <li>Do this<span><i class="fas fa-trash"></i></span></li>
             <li>Do that<span><i class="fas fa-trash"></i></span></li>
         </ul>

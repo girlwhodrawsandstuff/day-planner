@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 
-{% block stylesheet %}  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='tasks.css')}}"/> {% endblock %}
+{% block stylesheet %}  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/tasks.css')}}"/> {% endblock %}
 
 {% block main %}
 
@@ -19,5 +19,7 @@
             <button>Clear All</button>
         </div>
     </div>
+
+    <script src="{{ url_for('static', filename='js/tasks.js') }}"></script>
 
 {% endblock %}

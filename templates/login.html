@@ -1,11 +1,11 @@
 {% extends 'layout.html' %} 
 
-{% block stylesheet %}  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='login.css')}}"/> {% endblock %}
+{% block stylesheet %}  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/login.css')}}"/> {% endblock %}
 
 {% block main %} 
 
     <div>
-        <h1>Login Form</h1>
+        <h1>Login</h1>
     </div>
 
     <form class="login-form" action="/login" method="post">

@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from tempfile import mkdtemp
 from werkzeug.security import generate_password_hash, check_password_hash
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config['SESSION_TYPE'] = 'filesystem'

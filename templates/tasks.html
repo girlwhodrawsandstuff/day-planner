@@ -6,18 +6,24 @@
 
     <div class="tasks-main">
         <h1 class="tasks-header">Tasks</h1>
-        <div class="input-field">
-            <input type="text" placeholder="Add your task"></input>
-            <button><i class="fas fa-plus"></i></button>
-        </div>
-        <ul class="list-items">
-            <li>Do this<span><i class="fas fa-trash"></i></span></li>
-            <li>Do that<span><i class="fas fa-trash"></i></span></li>
-        </ul>
-        <div class="footer">
-            <span>You have 2 pending tasks</span>
-            <button>Clear All</button>
-        </div>
+        <form action="/add" method="post">
+            <div class="input-field">
+                <input type="text" name="title" placeholder="Add your task"></input>
+                <button type="submit"
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+        </form>
+
+        {% for todo in todo_list %}
+            <ul class="list-items">
+                <li>{{ todo.title }}<span><a href="/delete/{{ todo.id }}"><i class="fas fa-trash"></i></a></span></li>
+            </ul>
+            <div class="footer">
+                <span>You have pending tasks</span>
+                <button>Clear All</button>
+            </div>
+        {% endfor %}
     </div>
 
     <script src="{{ url_for('static', filename='js/tasks.js') }}"></script>

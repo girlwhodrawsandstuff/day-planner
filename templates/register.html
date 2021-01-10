@@ -1,35 +1,61 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf=8" />
+    <metaname ="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <title>Register</title>
+  </head>
 
-{% block stylesheet %}  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/register.css')}}"/> {% endblock %}
+  <body>
+    <nav class="top-navbar">
+      <div class="brand-title">DAY PLANNER</div>
+      <div class="top-navbar-links">
+        <ul>
+          <li><a href="#">Register</a></li>
+          <li><a href="#">Sign In</a></li>
+        </ul>
+      </div>
+    </nav>
 
-{% block main %}
+    <main class="main-section">
+      <div class="page-header">Register</div>
 
-    <div>
-        <h1>Register</h1>
-    </div>
-
-    <form action="/register" method="post">
-
+      <form class="register-form" action="/register" method="post">
         <!-- username -->
         <div>
-            <input type="text" id="name" name="username" placeholder="Username" autocomplete="off" autofocus/>
+          <input
+            type="text"
+            id="name"
+            name="username"
+            placeholder="Username"
+            autocomplete="off"
+            autofocus
+          />
         </div>
-
         <!-- password -->
         <div>
-            <input type="password" id="pass" name="password" placeholder="Password"/>
+          <input
+            type="password"
+            id="pass"
+            name="password"
+            placeholder="Password"
+          />
         </div>
-
         <!-- confirmation -->
         <div>
-            <input type="password" id="pass1" name="confirmation" placeholder="Confirm Password"/>
+          <input
+            type="password"
+            id="pass1"
+            name="confirmation"
+            placeholder="Confirm Password"
+          />
         </div>
-
-        <!-- button -->
-        <div>
-            <button id="submit" type="submit">Register</button>
+        <!-- submit button -->
+        <div class="submit-button">
+          <button id="submit" type="submit">Register</button>
         </div>
-
-    </form>
-
-{% endblock %}
+      </form>
+    </main>
+  </body>
+</html>

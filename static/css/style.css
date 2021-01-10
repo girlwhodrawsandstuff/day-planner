@@ -1,24 +1,112 @@
 @import url('https://fonts.googleapis.com/css?family=JetBrains+Mono');
 
-body {
-  font-family: 'JetBrains Mono', sans-serif;
-  background: #1f1b22;
+* {
+  box-sizing: border-box;
 }
 
-* {
+body {
+  font-family: 'JetBrains Mono', sans-serif;
   margin: 0;
   padding: 0;
+}
+
+.top-navbar {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  background-color:#121212;
+  color: white;
+}
+
+.brand-title {
+  font-size: 1.5rem;
+  margin: .5rem;
+}
+
+.top-navbar-links {
+  height: 100%;
+}
+
+.top-navbar-links ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.top-navbar-links li {
   list-style: none;
+}
+
+.top-navbar-links li a {
+  display: block;
   text-decoration: none;
+  color: white;
+  padding: 1rem;
+}
+
+.top-navbar-links li:hover {
+  background-color: #555;
+}
+
+.toggle-button {
+  position: absolute;
+  top: .75rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+
+.toggle-button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+  .top-navbar {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .toggle-button {
+      display: flex;
+  }
+
+  .top-navbar-links {
+      display: none;
+      width: 100%;
+  }
+
+  .top-navbar-links ul {
+      width: 100%;
+      flex-direction: column;
+  }
+
+  .top-navbar-links ul li {
+      text-align: center;
+  }
+
+  .top-navbar-links ul li a {
+      padding: .5rem 1rem;
+  }
+
+  .top-navbar-links.active {
+      display: flex;
+  }
 }
 
 .sidebar {
   position: fixed;
   left: 0;
   width: 60px;
-  height: 100%;
+  height: 100vh;
   background: #121212;
-  transition: 0.4s;
+  transition: 0.4s ease;
   overflow: hidden;
 }
 
@@ -26,25 +114,18 @@ body {
   width: 250px;
 }
 
-.sidebar ul {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+.sidebar-nav {
+  margin: 0;
+  padding: 0;
 }
 
-.sidebar ul li a:hover {
-  background: #bb86fc;
-  color: #121212;
-}
-
-.sidebar ul li {
+.sidebar-item {
   position: relative;
   width: 100%;
   list-style: none;
 }
 
-.sidebar ul li a {
+.sidebar-link {
   position: relative;
   display: block;
   width: 100%;
@@ -53,7 +134,12 @@ body {
   color: #f5f5f5;
 }
 
-.sidebar ul li a .icon {
+.sidebar-link:hover {
+  background: #bb86fc;
+  color: #121212;
+}
+
+.icon {
   position: relative;
   display: block;
   min-width: 60px;
@@ -62,11 +148,11 @@ body {
   text-align: center;
 }
 
-.sidebar ul li a .icon .fas {
+.icon .fas {
   font-size: 24px;
 }
 
-.sidebar ul li a .title {
+.title {
   position: relative;
   display: block;
   padding: 0 10px;
@@ -76,40 +162,23 @@ body {
   white-space: nowrap;
 }
 
-.top-sidebar{
-  position: fixed;
-  padding: 15px 30px;
+.main-section {
   display: flex;
-  box-sizing: border-box;
-  margin: 0;
-  background-color: #121212;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  position: static;
+}
+
+.page-header {
   font-size: 24px;
-  justify-content: space-between;
+  padding: 10px;
 }
 
-
-div button {
-  background-color: #bb86fc;
-  display: inline-block;
-  border: none;
-  border-radius: 5px;
-  color: #121212;
-  text-decoration: none;
-  font-family: "JetBrains Mono";
-  font-size: 20px;
-  padding: 10px 20px;
-  transition: 0.3s;
-}
-
-div button:hover{
-  background-color: #e9d8fe;
-}
-
-.register-btn {
-  background-color: #d9b9ff;
-  margin-right: 20px;
-}
-
-h1 {
-  color: #f5f5f5;
+.submit-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:10px;
 }

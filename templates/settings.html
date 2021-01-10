@@ -1,33 +1,81 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf=8" />
+    <metaname ="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <title>Settings</title>
+    <!-- Required to import fontawesome icons -->
+    <script
+      src="https://kit.fontawesome.com/c20afc23a5.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-{% block stylesheet %}  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/settings.css')}}"/> {% endblock %}
+  <body>
+    <!--- navigation bar -->
+    <nav class="sidebar">
+      <ul class="sidebar-nav">
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="/tasks">
+            <span class="icon"><i class="fas fa-edit"></i></span>
+            <span class="title">Tasks</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="/settings">
+            <span class="icon"><i class="fas fa-cog"></i></span>
+            <span class="title">Settings</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="/logout">
+            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+            <span class="title">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
 
-{% block main %}
-    <div>
-        <h1>Settings</h1>
-    </div>
-
-    <form action="/settings" method="post">
+    <!-- main page -->
+    <main class="main-section">
+      <div class="page-header">Settings</div>
+      <form action="/settings" method="post">
         <!-- Old Password -->
         <div>
-            <input type="password" id="oldpass" name="old" placeholder="Old Password" autocomplete="off" autofocus/>
+          <input
+            type="password"
+            id="oldpass"
+            name="old"
+            placeholder="Old Password"
+            autocomplete="off"
+            autofocus
+          />
         </div>
-
         <!-- New Password -->
         <div>
-            <input type="password" id="pass" name="new" placeholder="New Password"/>
+          <input
+            type="password"
+            id="pass"
+            name="new"
+            placeholder="New Password"
+          />
         </div>
 
         <!-- Confirm Password -->
         <div>
-            <input type="password" id="pass1" name="confirmation" placeholder="Confirm Password"/>
+          <input
+            type="password"
+            id="pass1"
+            name="confirmation"
+            placeholder="Confirm Password"
+          />
         </div>
-
         <!-- Button -->
-        <div>
-            <button id="submit" type="submit" disabled>Change Password</button>
+        <div class="submit-button">
+          <button id="submit" type="submit">Change Password</button>
         </div>
-
-    </form>
-    
-{% endblock %}
+      </form>
+    </main>
+  </body>
+</html>

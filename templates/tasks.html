@@ -1,31 +1,64 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf=8" />
+    <metaname ="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <title>Settings</title>
+    <!-- Required to import fontawesome icons -->
+    <script
+      src="https://kit.fontawesome.com/c20afc23a5.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-{% block stylesheet %}  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/tasks.css')}}"/> {% endblock %}
+  <body>
+    <!--- navigation bar -->
+    <nav class="sidebar">
+      <ul class="sidebar-nav">
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="/tasks">
+            <span class="icon"><i class="fas fa-edit"></i></span>
+            <span class="title">Tasks</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="/settings">
+            <span class="icon"><i class="fas fa-cog"></i></span>
+            <span class="title">Settings</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="/logout">
+            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+            <span class="title">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
 
-{% block main %}
+    <main>
+        <div class="tasks-main">
+            <h1 class="tasks-header">Tasks</h1>
+            <form action="/add" method="post">
+                <div class="input-field">
+                    <input type="text" name="title" placeholder="Add your task"></input>
+                    <button type="submit"
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </form>
 
-    <div class="tasks-main">
-        <h1 class="tasks-header">Tasks</h1>
-        <form action="/add" method="post">
-            <div class="input-field">
-                <input type="text" name="title" placeholder="Add your task"></input>
-                <button type="submit"
-                    <i class="fas fa-plus"></i>
-                </button>
-            </div>
-        </form>
+            {% for todo in todo_list %}
+                <ul class="list-items">
+                    <li>{{ todo.title }}<span><a href="/delete/{{ todo.id }}"><i class="fas fa-trash"></i></a></span></li>
+                </ul>
+                <div class="footer">
+                    <span>You have pending tasks</span>
+                    <button>Clear All</button>
+                </div>
+            {% endfor %}
+        </div>
 
-        {% for todo in todo_list %}
-            <ul class="list-items">
-                <li>{{ todo.title }}<span><a href="/delete/{{ todo.id }}"><i class="fas fa-trash"></i></a></span></li>
-            </ul>
-            <div class="footer">
-                <span>You have pending tasks</span>
-                <button>Clear All</button>
-            </div>
-        {% endfor %}
-    </div>
-
-    <script src="{{ url_for('static', filename='js/tasks.js') }}"></script>
-
-{% endblock %}
+        <script src="{{ url_for('static', filename='js/tasks.js') }}"></script>
+    </main>

@@ -19,15 +19,16 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///planner.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False;
 db = SQLAlchemy(app)
 
-class users(db.Model):
+class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     username = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(50), nullable=False)
+    tasks = db.relationship('Todo', backref='owner')
     
-class todo(db.Model):
+class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
-    user_id = db.Column(db.Integer, ForeignKey('users.id'))
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     
 @app.route("/")
@@ -48,23 +49,22 @@ def register():
         pass2 = request.form.get("confirmation")
         
         # query database for usernames
-        rows = users.query.filter_by(username=username).count()
+        rows = Users.query.filter_by(username=username).count()
         
         # ensure username is distinct
         if rows != 0:
-            flash("Username is already taken")
+            return "Username is already taken"
         
         # check for matching passwords
         elif pass1 != pass2:
-            flash("Passwords don't match")
+            return "Passwords don't match"
         
         else:
             # adding values to the table
-            register = users(username = username, password = pass1)
+            register = Users(username = username, password = pass1)
             db.session.add(register)
             db.session.commit()
             
-            flash("Registered!")
             return redirect(url_for("login"))
         
     else:
@@ -81,24 +81,22 @@ def login():
         
         # ensure username was submitted
         if not request.form.get("username"):
-            flash("You must provide username")
-            return render_template("login.html")
+            return "You must provide username"
         
         # ensure password was submitted
         elif not request.form.get("password"):
-            flash("You must provide password")
-            return render_template("login.html")
+            return "You must provide password"
         
         username = request.form.get("username")
         password = request.form.get("password")
         
         # query database for user
-        user = users.query.filter_by(username=username, password=password).first()
+        user = Users.query.filter_by(username=username, password=password).first()
         if user is not None:
         # Remember which user has logged in
             session["user_id"] = user.id
             return redirect(url_for("tasks"))
-        flash("Invalid username/password")
+        return "Invalid username/password"
     
     else:
         return render_template("login.html")
@@ -108,7 +106,7 @@ def login():
 def tasks():
     """User tasks"""
     # show all todos
-    todo_list = todo.query.all()
+    todo_list = Todo.query.filter_by(owner_id=session["user_id"])
     print(todo_list)
     return render_template("tasks.html", todo_list=todo_list)
 
@@ -117,7 +115,7 @@ def tasks():
 def add():
     """Add new item"""
     title = request.form.get("title")
-    new_todo = todo(title=title)
+    new_todo = Todo(title=title, owner_id=session["user_id"])
     db.session.add(new_todo)
     db.session.commit()
     return redirect(url_for("tasks"))
@@ -126,10 +124,42 @@ def add():
 @login_required
 def delete(todo_id):
     # delete item
-    todo_item = todo.query.filter_by(id=todo_id).first()
+    todo_item = Todo.query.filter_by(id=todo_id).first()
     db.session.delete(todo_item)
     db.session.commit()
     return redirect(url_for("tasks"))
+
+@app.route("/settings", methods=["GET", "POST"])
+@login_required
+def settings():
+    """ Change password """
+    if request.method == "POST":
+        old = request.form.get("old")
+        npass1 = request.form.get("new")
+        npass2 = request.form.get("confirmation")
+        
+        if not request.form.get("old"):
+            return "You must fill in all boxes"
+            
+        elif not request.form.get("new"):
+            return "You must fill in all boxes"
+        
+        elif not request.form.get("confirmation"):
+            return "You must fill in all boxes"
+        
+        # ensure passwords match
+        elif npass1 != npass2:
+            return "Passwords don't match"
+        
+        else:
+            # adding new values to the table
+            change = Users.query.filter_by(id=session["user_id"]).first()
+            change.password = npass1
+            db.session.commit()
+            return redirect(url_for("tasks"))
+        
+    else:
+        return render_template("settings.html")
 
 @app.route("/logout")
 def logout():

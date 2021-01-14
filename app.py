@@ -2,6 +2,7 @@ from flask import Flask, flash, render_template, redirect, request, redirect, ur
 from tempfile import mkdtemp
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import ForeignKey
 from werkzeug.security import generate_password_hash, check_password_hash
 from helpers import login_required
 
@@ -26,6 +27,8 @@ class users(db.Model):
 class todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
+    user_id = db.Column(db.Integer, ForeignKey('users.id'))
+
     
 @app.route("/")
 def index():

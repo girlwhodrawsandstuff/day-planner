@@ -36,6 +36,7 @@ body {
 
 .top-navbar-links li {
   list-style: none;
+  transition: 0.3s;
 }
 
 .top-navbar-links li a {
@@ -181,4 +182,15 @@ body {
   justify-content: center;
   align-items: center;
   padding:10px;
+}
+
+.submit-button button {
+  background-color: #bb86fc;
+  font-family: 'JetBrains Mono', sans-serif;
+  font-size: 18px;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: 0.3s;
 }

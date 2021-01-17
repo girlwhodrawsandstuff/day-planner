@@ -5,8 +5,11 @@ This is a Flask program where users can login and keep track of their daily task
 
 ## Features:
 1] Sign Up
+
 2] Login/Logout
+
 3] Change Password
+
 4] Tasks
 
 ## Demo:
@@ -28,6 +31,6 @@ This is a Flask program where users can login and keep track of their daily task
   - pip3 install -U virtualenv
   - source env/bin/activate
 
-3] Once all the dependancies have been installed, run the command `python app.py`
+4] Once all the dependancies have been installed, run the command `python app.py`
 
-4] This should start a local server and you can access it on your browser.
+5] This should start a local server and you can access it on your browser.

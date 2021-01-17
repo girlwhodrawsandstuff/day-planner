@@ -9,10 +9,10 @@ This is a Flask program where users can login and keep track of their daily task
 3] Change Password
 4] Tasks
 
-## Demo
+## Demo:
 
 
-## Installation-
+## Installation:
 
 1] Clone the repository to your machine.
 

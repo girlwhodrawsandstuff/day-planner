@@ -22,6 +22,7 @@ Youtube: https://youtu.be/ZX5aYcg5F8o
 2] Download python from: https://www.python.org/downloads/
 
 3] Run the following commands:
+  - pip3 install pytest
   - pip3 install -U Flask
   - pip3 install -U flask_session
   - pip3 install -U Jinja2

@@ -380,11 +380,15 @@ body {
   align-items: center;
 }
 
-.days div:hover {
-  background-color: #bb86fc;
+.days div:hover:not(.today) {
+  border: 0.2rem solid #555;
 }
 
 .prev-date,
 .next-date {
   opacity: 0.5;
+}
+
+.today {
+  background-color: #bb86fc;
 }

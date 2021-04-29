@@ -129,6 +129,11 @@ def delete(todo_id):
     db.session.commit()
     return redirect(url_for("tasks"))
 
+@app.route("/calendar", methods=["GET"])
+def calendar():
+    """ Display calendar """
+    return render_template("calendar.html")
+
 @app.route("/settings", methods=["GET", "POST"])
 @login_required
 def settings():

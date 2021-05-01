@@ -134,6 +134,11 @@ def calendar():
     """ Display calendar """
     return render_template("calendar.html")
 
+@app.route("/notes", methods=["GET"])
+def notes():
+    """ Display Notes """
+    return render_template("notes.html")
+
 @app.route("/settings", methods=["GET", "POST"])
 @login_required
 def settings():

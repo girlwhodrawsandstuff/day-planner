@@ -4,7 +4,7 @@
     <meta charset="utf=8" />
     <metaname ="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/css/style.css" />
-    <title>Settings</title>
+    <title>Calendar</title>
     <!-- Required to import fontawesome icons -->
     <script
       src="https://kit.fontawesome.com/c20afc23a5.js"
@@ -13,6 +13,7 @@
   </head>
 
   <body>
+  
     <!--- navigation bar -->
     <nav class="sidebar">
       <ul class="sidebar-nav">
@@ -49,45 +50,5 @@
       </ul>
     </nav>
 
-    <!-- main page -->
-    <main class="main-section">
-      <div class="page-header">Settings</div>
-      <form action="/settings" method="post">
-        <!-- Old Password -->
-        <div class="form-input">
-          <input
-            type="password"
-            id="oldpass"
-            name="old"
-            placeholder="Old Password"
-            autocomplete="off"
-            autofocus
-          />
-        </div>
-        <!-- New Password -->
-        <div class="form-input">
-          <input
-            type="password"
-            id="pass"
-            name="new"
-            placeholder="New Password"
-          />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="form-input">
-          <input
-            type="password"
-            id="pass1"
-            name="confirmation"
-            placeholder="Confirm Password"
-          />
-        </div>
-        <!-- Button -->
-        <div class="submit-button">
-          <button id="submit" type="submit">Change</button>
-        </div>
-      </form>
-    </main>
   </body>
 </html>

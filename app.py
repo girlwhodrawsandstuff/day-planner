@@ -30,6 +30,12 @@ class Todo(db.Model):
     title = db.Column(db.String(100), nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
+class Notes(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    body = db.Colum(db.String(1000), nullable=True)
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
     
 @app.route("/")
 def index():

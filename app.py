@@ -118,7 +118,7 @@ def tasks():
 
 @app.route("/add", methods=["POST"])
 @login_required
-def add():
+def addToTasks():
     """Add new item"""
     title = request.form.get("title")
     new_todo = Todo(title=title, owner_id=session["user_id"])
@@ -128,7 +128,7 @@ def add():
 
 @app.route("/delete/<int:todo_id>")
 @login_required
-def delete(todo_id):
+def deleteFromTasks(todo_id):
     # delete item
     todo_item = Todo.query.filter_by(id=todo_id).first()
     db.session.delete(todo_item)

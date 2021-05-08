@@ -4,7 +4,7 @@
     <meta charset="utf=8" />
     <metaname ="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/css/style.css" />
-    <title>Calendar</title>
+    <title>Notes</title>
     <!-- Required to import fontawesome icons -->
     <script
       src="https://kit.fontawesome.com/c20afc23a5.js"
@@ -56,8 +56,12 @@
           <div class="notes-page-heading">
             <h1>All Notes</h1>
           </div>
-          <div class="submit-button">
-            <button action="/add" method="post">Add a note</button>
+          <div class="add-notes">
+            <form action="/add-notes" method="post">
+              <div class="submit-button">
+                <button>Add a note</button>
+              </div>
+            </form>
           </div>
         </div>
     </main>

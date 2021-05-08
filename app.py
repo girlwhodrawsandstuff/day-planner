@@ -33,7 +33,7 @@ class Todo(db.Model):
 class Notes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
-    body = db.Colum(db.String(1000), nullable=True)
+    body = db.Column(db.String(1000), nullable=True)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     
@@ -116,7 +116,7 @@ def tasks():
     print(todo_list)
     return render_template("tasks.html", todo_list=todo_list)
 
-@app.route("/add", methods=["POST"])
+@app.route("/add-task", methods=["POST"])
 @login_required
 def addToTasks():
     """Add new item"""
@@ -126,7 +126,7 @@ def addToTasks():
     db.session.commit()
     return redirect(url_for("tasks"))
 
-@app.route("/delete/<int:todo_id>")
+@app.route("/delete-task/<int:todo_id>")
 @login_required
 def deleteFromTasks(todo_id):
     # delete item
@@ -140,10 +140,18 @@ def calendar():
     """ Display calendar """
     return render_template("calendar.html")
 
-@app.route("/notes", methods=["GET"])
+@app.route("/notes", methods=["GET", "POST"])
+@login_required
 def notes():
-    """ Display Notes """
-    return render_template("notes.html")
+    if request.method == "POST":
+        return redirect(url_for("add-notes"))
+    else:
+        return render_template("notes.html")
+
+@app.route("/add-notes", methods=["GET", "POST"])
+@login_required
+def addNotes():
+    return render_template("addnotes.html")
 
 @app.route("/settings", methods=["GET", "POST"])
 @login_required

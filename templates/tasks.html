@@ -52,7 +52,7 @@
     <main class="main-section">
         <div class="wrapper">
             <div class="page-header">Tasks</div>
-            <form action="/add" method="post">
+            <form action="/add-task" method="post">
                 <div class="input-field">
                     <input type="text" name="title" placeholder="Add your task"></input>
                     <button type="submit">
@@ -63,7 +63,7 @@
 
             {% for todo in todo_list %}
                 <ul class="list-items">
-                    <li>{{ todo.title }}<span><a href="/delete/{{ todo.id }}"><i class="fas fa-trash"></i></a></span></li>
+                    <li>{{ todo.title }}<span><a href="/delete-task/{{ todo.id }}"><i class="fas fa-trash"></i></a></span></li>
                 </ul>
             {% endfor %}
         </div>

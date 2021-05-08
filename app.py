@@ -5,6 +5,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey
 from werkzeug.security import generate_password_hash, check_password_hash
 from helpers import login_required
+from google.oauth2 import id_token
+from google.auth.transport import requests
 
 app = Flask(__name__)
 
@@ -16,7 +18,7 @@ Session(app)
 
 # configurations for database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///planner.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False;
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 class Users(db.Model):
@@ -107,8 +109,45 @@ def login():
     else:
         return render_template("login.html")
 
+@app.route("/googlesignin", methods=["GET", "POST"])
+def tokenSignIn():
+    if request.method == "POST":
+        try:
+            idtoken = request.form.get("idtoken")
+            clientid = "178100631317-7kk5edr08pptqi100dp344ug1mhc3thi.apps.googleusercontent.com"
+            print("hello!!!")
+            print(idtoken)
+            print("\n")
+            idinfo = id_token.verify_oauth2_token(idtoken, requests.Request(), clientid)
+            print("id info:", idinfo)
+            username = str(idinfo['sub'])
+            password = "defaultpassword"
+            print("\n") 
+            print("username:", username)
+            print("\n")
+
+            # query database for usernames
+            rows = Users.query.filter_by(username=username).count()
+            user = Users.query.filter_by(username=username, password=password).first()
+
+            # check if user exists
+            if rows != 0:
+                if user is not None:
+                    session["user_id"] = user.id
+                    print("welcome back!")
+                    return redirect(url_for("tasks"), 303)
+            else:
+                # adding values to the table
+                register = Users(username = username, password = password)
+                db.session.add(register)
+                db.session.commit()
+                print("sucess!")
+                return redirect(url_for("tasks"))
+        except:
+            return "error"
+
+
 @app.route("/tasks", methods=["GET"])
-@login_required
 def tasks():
     """User tasks"""
     # show all todos
@@ -117,17 +156,15 @@ def tasks():
     return render_template("tasks.html", todo_list=todo_list)
 
 @app.route("/add-task", methods=["POST"])
-@login_required
 def addToTasks():
     """Add new item"""
     title = request.form.get("title")
     new_todo = Todo(title=title, owner_id=session["user_id"])
     db.session.add(new_todo)
     db.session.commit()
-    return redirect(url_for("tasks"))
+    redirect(url_for("tasks"))
 
 @app.route("/delete-task/<int:todo_id>")
-@login_required
 def deleteFromTasks(todo_id):
     # delete item
     todo_item = Todo.query.filter_by(id=todo_id).first()
@@ -141,12 +178,10 @@ def calendar():
     return render_template("calendar.html")
 
 @app.route("/notes", methods=["GET", "POST"])
-@login_required
 def notes():
     return render_template("notes.html")
 
 @app.route("/settings", methods=["GET", "POST"])
-@login_required
 def settings():
     """ Change password """
     if request.method == "POST":

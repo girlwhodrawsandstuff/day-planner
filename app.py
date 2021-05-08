@@ -143,15 +143,7 @@ def calendar():
 @app.route("/notes", methods=["GET", "POST"])
 @login_required
 def notes():
-    if request.method == "POST":
-        return redirect(url_for("add-notes"))
-    else:
-        return render_template("notes.html")
-
-@app.route("/add-notes", methods=["GET", "POST"])
-@login_required
-def addNotes():
-    return render_template("addnotes.html")
+    return render_template("notes.html")
 
 @app.route("/settings", methods=["GET", "POST"])
 @login_required

@@ -1,5 +1,3 @@
-# CS50-Final-Project
-
 # Day Planner Website
 This is a Flask program where users can login and keep track of their daily tasks. In the future, I plan to add in more features like a user calendar, notes, and a login via Facebook/Google.
 

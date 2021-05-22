@@ -15,7 +15,19 @@
     <title>Login</title>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script>
+      var userClickedSignIn = false;
+
+      let signInClicked = function () { 
+        console.log("userClickedSignIn")
+        userClickedSignIn = true;
+      }
+
       function onSignIn(googleUser) {
+        console.log(userClickedSignIn);
+        if (!userClickedSignIn) {
+          return;
+        }
+        console.log("Sign in called...");
         // var profile = googleUser.getBasicProfile();
         // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
         // console.log('Name: ' + profile.getName());
@@ -37,6 +49,9 @@
         };
         xhr.send("idtoken=" + id_token);
       }
+      window.onload = function() {
+        document.getElementById("google-signin").addEventListener("click", signInClicked, false);
+      };
     </script>
   </head>
 
@@ -81,7 +96,7 @@
           <button id="submit" type="submit">Login</button>
         </div>
       </form>
-      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+      <div id="google-signin" class="g-signin2" data-onsuccess="onSignIn"></div>
     </main>
   </body>
 </html>

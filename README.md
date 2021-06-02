@@ -17,19 +17,26 @@ Youtube: https://youtu.be/ZX5aYcg5F8o
 
 1] Clone the repository to your machine.
 
-2] Download python from: https://www.python.org/downloads/
+2] Download python(3.7 or later) from: https://www.python.org/downloads/
 
 3] Run the following commands:
-  - pip3 install pytest
-  - pip3 install -U Flask
-  - pip3 install -U flask_session
-  - pip3 install -U Jinja2
-  - pip3 install -U Flask-SQLAlchemy
-  - pip3 install -U Werkzeug
-  - pip3 install -U flask-login
-  - pip3 install -U virtualenv
+  - pip3 install pytest (not needed right now)
+  - pip install -U Flask
+  - pip install -U flask_session
+  - pip3 install -U Jinja2 (not needed right now)
+  - pip install -U Flask-SQLAlchemy
+  - pip install -U Werkzeug
+  - pip install -U flask-login
+  - pip install -U virtualenv
+  - virtualenv env
   - source env/bin/activate
+  OR 
+  - venv\scripts\activate
+  - pip install -U google-api-python-client
+  - pip install -U google-auth google-auth-oauthlib google-auth-httplib2
+  - pip install -U upgrade requests
 
 4] Once all the dependancies have been installed, run the command `python app.py`
 
 5] This should start a local server and you can access it on your browser.
+   Note: In order to sign in using Google, you must use 'http://localhost:5000/' instead of 'http://127.0.0.1:5000/'

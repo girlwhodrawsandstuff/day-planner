@@ -1,3 +1,5 @@
+const addNoteButton = document.getElementById("add-note-button")
+
 togglePopup = () => {
-    document.getElementById("add-note-button").classList.toggle("active");
+    addNoteButton.classList.toggle("active");
 }

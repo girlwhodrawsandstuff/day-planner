@@ -13,7 +13,6 @@
   </head>
 
   <body>
-  
     <!--- navigation bar -->
     <nav class="sidebar">
       <ul class="sidebar-nav">
@@ -49,22 +48,40 @@
         </li>
       </ul>
     </nav>
-
     <!-- Main section -->
     <main class="main-section">
-        <div class="notes-container">
-          <div class="notes-page-heading">
-            <h1>All Notes</h1>
+      <div class="notes-popup" id="add-note-button">
+        <div class="overlay"></div>
+        <h1>All Notes</h1>
+        <li>
+          <ul>
+            Note 1
+          </ul>
+          <ul>
+            Note 2
+          </ul>
+          <ul>
+            Note 3
+          </ul>
+        </li>
+        <div class="content">
+          <div class="close-button" onclick="togglePopup()">×</div>
+          <div class="notes-title-field">
+            <input type="text" placeholder="Your title"></input>
           </div>
-          <div class="add-notes">
-            <form action="/add-notes" method="post">
-              <div class="submit-button">
-                <button>Add a note</button>
-              </div>
-            </form>
+          <div class="notes-body-field">
+            <textarea></textarea>
+          </div>
+          <div class="submit-button">
+            <button>Save</button>
           </div>
         </div>
+      </div>
+      <button class="add-note-button" onclick="togglePopup()">Add a note</button>
+
+      <script src="/static/js/notes.js"></script>
     </main>
+    
 
   </body>
 </html>

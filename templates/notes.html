@@ -74,13 +74,13 @@
         <div class="content">
           <div class="close-button" onclick="togglePopup()">×</div>
           <div class="notes-title-field">
-            <input type="text" name="title" placeholder="Your title"></input>
+            <input id="title-input" type="text" name="title" placeholder="Your title" onkeyup="handleSaveButtonActiveState()"></input>
           </div>
           <div class="notes-body-field">
             <textarea name="body"></textarea>
           </div>
-          <div class="submit-button">
-            <button>Save</button>
+          <div class="save">
+            <button id="save-button" type="submit">Save</button>
           </div>
         </div>
       </div>

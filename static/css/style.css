@@ -498,3 +498,29 @@ body {
   font-family: 'JetBrains Mono', sans-serif;
   font-size: 18px;
 }
+
+.save {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:10px;
+}
+
+.save button {
+  background-color: #bb86fc;
+  font-family: 'JetBrains Mono', sans-serif;
+  font-size: 18px;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  pointer-events: none;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.save button.active {
+  opacity: 1;
+  pointer-events: auto;
+}

@@ -448,10 +448,6 @@ body {
 }
  
 .add-note-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
   padding: 15px;
   font-size: 18px;
   color: #121212;

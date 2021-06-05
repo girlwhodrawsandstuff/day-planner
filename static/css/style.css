@@ -487,3 +487,14 @@ body {
   padding: 0px;
   font-family: 'JetBrains Mono', sans-serif;
 }
+
+.all-notes {
+  padding: 10px;
+}
+
+.all-notes li {
+  list-style: none;
+  padding: 0px 0px 0px 10px;
+  font-family: 'JetBrains Mono', sans-serif;
+  font-size: 18px;
+}

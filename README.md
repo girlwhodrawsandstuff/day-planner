@@ -1,5 +1,5 @@
 # Day Planner Website
-This is a Flask program where users can login and keep track of their daily tasks. In the future, I plan to add in more features like a user calendar, notes, and a login via Facebook/Google.
+This is a Flask program where users can login and keep track of their daily tasks. In the future, I plan to add in more features like a user profile, login with Github, etc.
 
 ## Features:
 1] Sign Up
@@ -9,6 +9,10 @@ This is a Flask program where users can login and keep track of their daily task
 3] Change Password
 
 4] Tasks
+
+5] Calendar
+
+6] Notes
 
 ## Demo:
 Youtube: https://youtu.be/ZX5aYcg5F8o
@@ -39,4 +43,8 @@ Youtube: https://youtu.be/ZX5aYcg5F8o
 4] Once all the dependancies have been installed, run the command `python app.py`
 
 5] This should start a local server and you can access it on your browser.
-   Note: In order to sign in using Google, you must use 'http://localhost:5000/' instead of 'http://127.0.0.1:5000/'
+
+## Installation:
+1] In order to sign in using Google, you must use 'http://localhost:5000/' instead of 'http://127.0.0.1:5000/'
+
+2] Google Sign In works with Chrome but not Mozilla Firefox.

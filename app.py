@@ -150,7 +150,6 @@ def tokenSignIn():
 @app.route("/tasks", methods=["GET"])
 def tasks():
     """User tasks"""
-    # show all todos
     todo_list = Todo.query.filter_by(owner_id=session["user_id"])
     print(todo_list)
     return render_template("tasks.html", todo_list=todo_list)
@@ -166,7 +165,7 @@ def addToTasks():
 
 @app.route("/delete-task/<int:todo_id>")
 def deleteFromTasks(todo_id):
-    # delete item
+    """Delete tasks"""
     todo_item = Todo.query.filter_by(id=todo_id).first()
     db.session.delete(todo_item)
     db.session.commit()
@@ -174,12 +173,24 @@ def deleteFromTasks(todo_id):
 
 @app.route("/calendar", methods=["GET"])
 def calendar():
-    """ Display calendar """
+    """Display calendar"""
     return render_template("calendar.html")
 
-@app.route("/notes", methods=["GET", "POST"])
+@app.route("/notes", methods=["GET"])
 def notes():
+    """User notes"""
     return render_template("notes.html")
+
+@app.route("/add-note", methods=["POST"])
+def addNote():
+    """Add new note"""
+    title = request.form.get("title")
+    body = request.form.get("body")
+    new_note = Notes(title=title, body=body, owner_id=session["user_id"])
+    db.session.add(new_note)
+    db.session.commit()
+    redirect(url_for("notes"))
+
 
 @app.route("/settings", methods=["GET", "POST"])
 def settings():

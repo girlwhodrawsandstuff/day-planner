@@ -115,16 +115,10 @@ def tokenSignIn():
         try:
             idtoken = request.form.get("idtoken")
             clientid = "178100631317-7kk5edr08pptqi100dp344ug1mhc3thi.apps.googleusercontent.com"
-            print("hello!!!")
             print(idtoken)
-            print("\n")
             idinfo = id_token.verify_oauth2_token(idtoken, requests.Request(), clientid)
-            print("id info:", idinfo)
             username = str(idinfo['sub'])
             password = "defaultpassword"
-            print("\n") 
-            print("username:", username)
-            print("\n")
 
             # query database for usernames
             rows = Users.query.filter_by(username=username).count()

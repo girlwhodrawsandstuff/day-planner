@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf=8" />
-    <metaname ="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name ="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/css/style.css" />
     <title>Notes</title>
     <!-- Required to import fontawesome icons -->
@@ -10,6 +10,21 @@
       src="https://kit.fontawesome.com/c20afc23a5.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://apis.google.com/js/platform.js" async defer>
+      let signOut =  function () {
+        console.log(gapi);
+        console.log(gapi.auth2);
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {   
+          console.log('User signed out.');   
+          auth2.disconnect();  
+        });
+        auth2.disconnect();
+      }
+      (function() {
+        document.getElementById ("google-signout").addEventListener ("click", signOut, false);
+      })();
+    </script>
   </head>
 
   <body>

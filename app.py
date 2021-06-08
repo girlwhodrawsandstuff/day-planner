@@ -155,7 +155,7 @@ def addToTasks():
     new_todo = Todo(title=title, owner_id=session["user_id"])
     db.session.add(new_todo)
     db.session.commit()
-    redirect(url_for("tasks"))
+    return redirect(url_for("tasks"))
 
 @app.route("/delete-task/<int:todo_id>")
 def deleteFromTasks(todo_id):
@@ -183,7 +183,7 @@ def addNote():
     new_note = Notes(title=title, body=body, owner_id=session["user_id"])
     db.session.add(new_note)
     db.session.commit()
-    redirect(url_for("notes"))
+    return redirect(url_for("notes"))
 
 
 @app.route("/settings", methods=["GET", "POST"])

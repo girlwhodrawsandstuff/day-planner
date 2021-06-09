@@ -140,6 +140,10 @@ def tokenSignIn():
         except:
             return "error"
 
+@app.route("/profile", methods=["GET"])
+def profile():
+    """User Profile"""
+    return render_template("profile.html")
 
 @app.route("/tasks", methods=["GET"])
 def tasks():

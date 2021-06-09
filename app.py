@@ -1,9 +1,8 @@
-from flask import Flask, flash, render_template, redirect, request, redirect, url_for, session
+from flask import Flask, render_template, redirect, request, redirect, url_for, session
 from tempfile import mkdtemp
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey
-from werkzeug.security import generate_password_hash, check_password_hash
 from helpers import login_required
 from google.oauth2 import id_token
 from google.auth.transport import requests
@@ -135,17 +134,19 @@ def tokenSignIn():
                 register = Users(username = username, password = password)
                 db.session.add(register)
                 db.session.commit()
-                print("sucess!")
+                print("success!")
                 return redirect(url_for("tasks"))
         except:
             return "error"
 
 @app.route("/profile", methods=["GET"])
+@login_required
 def profile():
     """User Profile"""
     return render_template("profile.html")
 
 @app.route("/tasks", methods=["GET"])
+@login_required
 def tasks():
     """User tasks"""
     todo_list = Todo.query.filter_by(owner_id=session["user_id"])
@@ -170,11 +171,13 @@ def deleteFromTasks(todo_id):
     return redirect(url_for("tasks"))
 
 @app.route("/calendar", methods=["GET"])
+@login_required
 def calendar():
     """Display calendar"""
     return render_template("calendar.html")
 
 @app.route("/notes", methods=["GET"])
+@login_required
 def notes():
     """User notes"""
     return render_template("notes.html")
@@ -191,6 +194,7 @@ def addNote():
 
 
 @app.route("/settings", methods=["GET", "POST"])
+@login_required
 def settings():
     """ Change password """
     if request.method == "POST":
@@ -222,6 +226,7 @@ def settings():
         return render_template("settings.html")
 
 @app.route("/logout")
+@login_required
 def logout():
     """Log user out"""
 

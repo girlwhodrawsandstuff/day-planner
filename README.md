@@ -2,49 +2,47 @@
 This is a Flask program where users can login and keep track of their daily tasks. In the future, I plan to add in more features like a user profile, login with Github, etc.
 
 ## Features:
-1] Sign Up
+1. Sign Up
+2. Login/Logout
+3. Change Password
+4. Tasks
+5. Calendar
+6. Notes
 
-2] Login/Logout
+## Demo
 
-3] Change Password
+[![Day Planner Website](https://img.youtube.com/vi/ZX5aYcg5F8o/0.jpg)](http://www.youtube.com/watch?v=ZX5aYcg5F8o "Day Planner Website")
 
-4] Tasks
+## Setup
 
-5] Calendar
+1. Download/clone this project on your machine
 
-6] Notes
+2. [Download Python (3.7 or later)](https://www.python.org/downloads/) 
 
-## Demo:
-Youtube: https://youtu.be/ZX5aYcg5F8o
+3. Install dependencies:
+```
+pip3 install -r requirements.txt
+```
 
-## Installation:
+4. Set up virtualenv
+```
+python3 -m pip install virtualenv
+python3 -m virtualenv env
+source env/bin/activate
+```
 
-1] Clone the repository to your machine.
+5. Run the app
+```
+python3 app.py 
+```
 
-2] Download python(3.7 or later) from: https://www.python.org/downloads/
+6. Access the app locally on http://localhost:5000/
 
-3] Run the following commands:
-  - pip3 install pytest (not needed right now)
-  - pip install -U Flask
-  - pip install -U flask_session
-  - pip3 install -U Jinja2 (not needed right now)
-  - pip install -U Flask-SQLAlchemy
-  - pip install -U Werkzeug
-  - pip install -U flask-login
-  - pip install -U virtualenv
-  - virtualenv env
-  - source env/bin/activate
-  OR 
-  - venv\scripts\activate
-  - pip install -U google-api-python-client
-  - pip install -U google-auth google-auth-oauthlib google-auth-httplib2
-  - pip install -U upgrade requests
 
-4] Once all the dependancies have been installed, run the command `python app.py`
 
-5] This should start a local server and you can access it on your browser.
-
-## Installation:
-1] In order to sign in using Google, you must use 'http://localhost:5000/' instead of 'http://127.0.0.1:5000/'
-
-2] Google Sign In works with Chrome but not Mozilla Firefox.
+> **Note**
+> 
+> - In order to sign in using Google, you must use http://localhost:5000/ instead of http://127.0.0.1:5000/
+> 
+> - Google Sign In works with Chrome but not Mozilla Firefox.
+> 

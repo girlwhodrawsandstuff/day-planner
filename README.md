@@ -42,7 +42,7 @@ python3 app.py
 
 > **Note**
 > 
-> - In order to sign in using Google, you must use http://localhost:5000/ instead of 'http://127.0.0.1:5000/
+> - In order to sign in using Google, you must use http://localhost:5000/ instead of http://127.0.0.1:5000/
 > 
 > - Google Sign In works with Chrome but not Mozilla Firefox.
 > 

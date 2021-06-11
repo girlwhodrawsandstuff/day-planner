@@ -112,6 +112,7 @@ body {
   background: #121212;
   transition: 0.4s ease;
   overflow: hidden;
+  z-index: 1;
 }
 
 .sidebar:hover {

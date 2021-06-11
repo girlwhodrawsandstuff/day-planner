@@ -1,0 +1,11 @@
+flask
+flask_session
+Jinja2
+Flask-SQLAlchemy
+Werkzeug
+flask-login
+google-api-python-client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+requests

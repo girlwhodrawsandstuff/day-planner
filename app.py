@@ -29,7 +29,11 @@ class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     username = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(50), nullable=False)
+    first_name = db.Column(db.String(255), nullable=False)
+    last_name = db.Column(db.String(255), nullable=False)
     tasks = db.relationship('Todo', backref='owner')
+    images = db.relationship('Images', backref='owner')
+    notes = db. relationship('Notes', backref='owner')
     
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -65,6 +69,8 @@ def register():
         username = request.form.get("username")
         pass1 = request.form.get("password")
         pass2 = request.form.get("confirmation")
+        first_name = request.form.get("first_name")
+        last_name = request.form.get("last_name")
         
         # query database for usernames
         rows = Users.query.filter_by(username=username).count()
@@ -79,7 +85,7 @@ def register():
         
         else:
             # adding values to the table
-            register = Users(username = username, password = pass1)
+            register = Users(username = username, password = pass1, first_name = first_name, last_name = last_name)
             db.session.add(register)
             db.session.commit()
             

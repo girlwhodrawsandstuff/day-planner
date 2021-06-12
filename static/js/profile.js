@@ -1,4 +1,4 @@
-const wrapper = document.querySelector(".wrapper");
+const wrapper = document.querySelector(".profile-wrapper");
 
 const defaultBtn = document.querySelector("#default-btn");
 const customBtn = document.querySelector("#custom-btn");

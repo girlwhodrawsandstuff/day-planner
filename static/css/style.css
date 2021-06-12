@@ -304,7 +304,7 @@ body {
 }
 
 /* Calendar page */
-.container {
+.calendar-container {
   border: 0;
   padding: 0;
   box-sizing: border-box;
@@ -533,7 +533,7 @@ body {
   position: relative;
 }
 
-.container .wrapper{
+.container .profile-wrapper{
   position: relative;
   height: 300px;
   width: 300px;
@@ -545,7 +545,7 @@ body {
   overflow: hidden;
 }
 
-.wrapper .image{
+.profile-wrapper .image{
   position: absolute;
   height: 100%;
   width: 100%;
@@ -554,7 +554,7 @@ body {
   justify-content: center;
 }
 
-.wrapper img{
+.profile-wrapper img{
   height: 100%;
   width: 100%;
   object-fit: cover;

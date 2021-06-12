@@ -81,11 +81,12 @@
              <div class="content">
              </div>
           </div>
-          <form name="uploadImageForm">
+          <form name="uploadImageForm" method="POST" action="/upload-image" enctype="multipart/form-data">
             <label id="custom-btn">
               <i class="fas fa-camera"></i>
-              <input id="default-btn" type="file" hidden/>
+              <input id="default-btn" type="file" name="image" hidden/>
             </label>
+            <button type="submit">Submit</button>
           </form>
         </div>
         <h1> {{ full_name }}</h1>

@@ -6,6 +6,7 @@ from sqlalchemy import ForeignKey
 from helpers import login_required
 from google.oauth2 import id_token
 from google.auth.transport import requests
+from flask_uploads import UploadSet, configure_uploads, IMAGES
 
 app = Flask(__name__)
 
@@ -19,6 +20,9 @@ Session(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///planner.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+
+# configurations for image upload
+photos = UploadSet('photos', IMAGES)
 
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True, nullable=False)
@@ -145,6 +149,17 @@ def profile():
     """User Profile"""
     current_user = Users.query.filter_by(id=session["user_id"]).first().username
     return render_template("profile.html", username=current_user, full_name="Full Name")
+
+@app.route("/upload-image", methods=["GET", "POST"])
+@login_required
+def uploadImage():
+    print('asdf')
+    if request.method == "POST":
+        if request.files:
+            image = request.files["image"]
+            print("HIiiiiiiiiiiiiiiiiiii")
+            print(image)
+        return redirect(url_for("profile"))
 
 @app.route("/tasks", methods=["GET"])
 @login_required

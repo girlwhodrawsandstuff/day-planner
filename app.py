@@ -134,6 +134,14 @@ def tokenSignIn():
             print(idtoken)
             idinfo = id_token.verify_oauth2_token(idtoken, requests.Request(), clientid)
             username = str(idinfo['sub'])
+            full_name = str(idinfo['name'])
+            print(full_name)
+            split_name = full_name.split(' ')
+            first_name = split_name[0]
+            if split_name[1] is not None:
+                last_name = split_name[1]
+            else:
+                last_name=" "
             password = "defaultpassword"
 
             # query database for usernames
@@ -148,7 +156,7 @@ def tokenSignIn():
                     return redirect(url_for("tasks"), 303)
             else:
                 # adding values to the table
-                register = Users(username = username, password = password)
+                register = Users(username = username, password = password, first_name=first_name, last_name=last_name)
                 db.session.add(register)
                 db.session.commit()
                 print("success!")

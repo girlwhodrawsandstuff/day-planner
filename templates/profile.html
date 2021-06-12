@@ -81,8 +81,12 @@
              <div class="content">
              </div>
           </div>
-          <button onclick="defaultBtnActive()" id="custom-btn"><i class="fas fa-camera"></i></button>
-          <input id="default-btn" type="file" hidden>
+          <form name="uploadImageForm">
+            <label id="custom-btn">
+              <i class="fas fa-camera"></i>
+              <input id="default-btn" type="file" hidden/>
+            </label>
+          </form>
         </div>
         <h1> {{ full_name }}</h1>
       </div>

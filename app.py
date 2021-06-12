@@ -3,6 +3,7 @@ from tempfile import mkdtemp
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey
+from sqlalchemy.orm import backref
 from helpers import login_required
 from google.oauth2 import id_token
 from google.auth.transport import requests

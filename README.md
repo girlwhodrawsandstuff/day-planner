@@ -20,20 +20,21 @@ This is a Flask program where users can login and keep track of their daily task
 2. [Download Python (3.7 or later)](https://www.python.org/downloads/) 
 
 3. Install dependencies:
-```
+```Powershell
 pip3 install -r requirements.txt
 ```
 
 4. Set up virtualenv
-```
+```Powershell
 python3 -m pip install virtualenv
 python3 -m virtualenv env
 source env/bin/activate
 ```
 
 5. Run the app
-```
-python3 app.py 
+```Powershell
+$env:FLASK_ENV = "development" # or "export FLASK_ENV=development" in Linux
+flask run app.py 
 ```
 
 6. Access the app locally on http://localhost:5000/

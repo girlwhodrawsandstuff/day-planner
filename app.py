@@ -6,7 +6,8 @@ from sqlalchemy import ForeignKey
 from helpers import login_required
 from google.oauth2 import id_token
 from google.auth.transport import requests
-from flask_uploads import UploadSet, configure_uploads, IMAGES
+from flask_uploads import UploadSet, IMAGES
+import base64
 
 app = Flask(__name__)
 
@@ -41,6 +42,12 @@ class Notes(db.Model):
     body = db.Column(db.String(1000), nullable=True)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
+class Images(db.Model):
+    id = db.Column(db.Integer,  primary_key=True)
+    name = db.Column(db.String(128), nullable=False)
+    data = db.Column(db.LargeBinary, nullable=False) 
+    rendered_data = db.Column(db.Text, nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     
 @app.route("/")
 def index():
@@ -148,7 +155,12 @@ def tokenSignIn():
 def profile():
     """User Profile"""
     current_user = Users.query.filter_by(id=session["user_id"]).first().username
-    return render_template("profile.html", username=current_user, full_name="Full Name")
+    image = Images.query.filter_by(id=session["user_id"]).first()
+    return render_template("profile.html", username=current_user, full_name="Full Name", user_image=image)
+
+def render_picture(data):
+    render_pic = base64.b64encode(data).decode('ascii') 
+    return render_pic
 
 @app.route("/upload-image", methods=["GET", "POST"])
 @login_required
@@ -157,8 +169,14 @@ def uploadImage():
     if request.method == "POST":
         if request.files:
             image = request.files["image"]
-            print("HIiiiiiiiiiiiiiiiiiii")
             print(image)
+            data = image.read()
+            render_file = render_picture(data)
+
+            new_image = Images(name=image.filename, data=data, rendered_data=render_file, owner_id=session["user_id"])
+            db.session.add(new_image)
+            db.session.commit() 
+
         return redirect(url_for("profile"))
 
 @app.route("/tasks", methods=["GET"])

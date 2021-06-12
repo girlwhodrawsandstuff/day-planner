@@ -161,8 +161,11 @@ def tokenSignIn():
 def profile():
     """User Profile"""
     current_user = Users.query.filter_by(id=session["user_id"]).first().username
+    first_name = Users.query.filter_by(id=session["user_id"]).first().first_name
+    last_name = Users.query.filter_by(id=session["user_id"]).first().last_name
+    full_name = str(first_name) + " " + str(last_name)
     image = Images.query.filter_by(id=session["user_id"]).first()
-    return render_template("profile.html", username=current_user, full_name="Full Name", user_image=image)
+    return render_template("profile.html", username=current_user, full_name=full_name, user_image=image)
 
 def render_picture(data):
     render_pic = base64.b64encode(data).decode('ascii') 

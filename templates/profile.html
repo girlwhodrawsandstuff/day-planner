@@ -73,10 +73,46 @@
     <main class="main-section">
       <div class="profile-container">
         <h1> Welcome, {{ username }}</h1>
-        <div class="profile-details-container">
-          
+        <div class="container">
+          <div class="wrapper">
+             <div class="image">
+                <img src="" alt="">
+             </div>
+             <div class="content">
+             </div>
+          </div>
+          <button onclick="defaultBtnActive()" id="custom-btn"><i class="fas fa-camera"></i></button>
+          <input id="default-btn" type="file" hidden>
         </div>
+        <h1> {{ full_name }}</h1>
       </div>
     </main>
+    <script>
+      const wrapper = document.querySelector(".wrapper");
+      const fileName = document.querySelector(".file-name");
+      const defaultBtn = document.querySelector("#default-btn");
+      const customBtn = document.querySelector("#custom-btn");
+      const img = document.querySelector("img");
+      let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
+      function defaultBtnActive() {
+        defaultBtn.click();
+      }
+      defaultBtn.addEventListener("change", function() {
+        const file = this.files[0];
+        if(file) {
+          const reader = new FileReader();
+          reader.onload = function() {
+            const result = reader.result;
+            img.src = result;
+            wrapper.classList.add("active");
+          }
+          reader.readAsDataURL(file);
+        }
+        if(this.value) {
+          let valueStore = this.value.match(regExp);
+          fileName.textContent = valueStore;
+        }
+      });
+   </script>
   </body>
 </html>

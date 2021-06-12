@@ -144,7 +144,7 @@ def tokenSignIn():
 def profile():
     """User Profile"""
     current_user = Users.query.filter_by(id=session["user_id"]).first().username
-    return render_template("profile.html", username=current_user)
+    return render_template("profile.html", username=current_user, full_name="Full Name")
 
 @app.route("/tasks", methods=["GET"])
 @login_required

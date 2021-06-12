@@ -525,3 +525,59 @@ body {
   opacity: 1;
   pointer-events: auto;
 }
+
+/* Profile page */
+.container{
+  height: 350px;
+  width: 430px;
+  position: relative;
+}
+
+.container .wrapper{
+  position: relative;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.wrapper.active{
+  border: none;
+}
+
+.wrapper .image{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.container #custom-btn{
+  display: block;
+  width: 50px;
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  color: #ffff;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: #bb86fc;
+  transition: 0.3s;
+}
+
+.container #custom-btn:hover {
+  background-color: #c291ff;
+}

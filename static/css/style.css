@@ -545,10 +545,6 @@ body {
   overflow: hidden;
 }
 
-.wrapper.active{
-  border: none;
-}
-
 .wrapper .image{
   position: absolute;
   height: 100%;

@@ -243,14 +243,15 @@ def addNote():
     db.session.commit()
     return redirect(url_for("notes"))
 
-@app.route("/notepage", methods=["GET"])
+@app.route("/notepage/<int:notes_id>", methods=["GET"])
 @login_required
-def fetchNote():
+def fetchNote(notes_id):
     print(request)
     # fetch id from query_string
+    notes_item = Notes.query.filter_by(id=notes_id).first()
     # use id to fetch note from db
     # render notepage.html using fetch note
-    return render_template("notepage.html")
+    return render_template("notepage.html", notes_item=notes_item)
 
 
 @app.route("/settings", methods=["GET", "POST"])

@@ -4,7 +4,7 @@
     <meta charset="utf=8" />
     <meta name ="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/css/style.css" />
-    <title>Notes</title>
+    <title>User's Notes</title>
     <!-- Required to import fontawesome icons -->
     <script
       src="https://kit.fontawesome.com/c20afc23a5.js"
@@ -69,40 +69,9 @@
         </li>
       </ul>
     </nav>
-    <!-- Main section -->
     <main class="main-section">
-      <div class="notes-popup" id="add-note-button">
-        <div class="overlay"></div>
-        <h1>All Notes</h1>
-        <div class="all-notes">
-          <li>
-          {% for notes in users_notes %}
-            <ul class="list-items">
-              <a href="/notepage/{{ notes.id }}">{{ notes.title }}</a>
-            </ul>
-          {% endfor %}
-        </div>
-        <div class="content">
-          <div class="close-button" onclick="togglePopup()">×</div>
-          <form action="/add-note" method="POST" >
-            <div class="notes-title-field">
-              <input id="title-input" type="text" name="title" placeholder="Your title" onkeyup="handleSaveButtonActiveState()"></input>
-            </div>
-            <div class="notes-body-field">
-              <textarea name="body"></textarea>
-            </div>
-            <div class="save">
-              <button id="save-button" type="submit">Save</button>
-            </div>
-          </form>
-          
-        </div>
-      </div>
-      <button class="add-note-button" onclick="togglePopup()">Add a note</button>
-
-      <script src="/static/js/notes.js"></script>
+        <h1>{{ notes_item.title }}</h1>
+        <p>{{ notes_item.body }}</p>
     </main>
-    
-
   </body>
 </html>

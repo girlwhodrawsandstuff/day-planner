@@ -136,13 +136,12 @@ def tokenSignIn():
             idinfo = id_token.verify_oauth2_token(idtoken, requests.Request(), clientid)
             username = str(idinfo['sub'])
             full_name = str(idinfo['name'])
-            print(full_name)
             split_name = full_name.split(' ')
             first_name = split_name[0]
             if split_name[1] is not None:
                 last_name = split_name[1]
             else:
-                last_name=" "
+                last_name=" abc"
             password = "defaultpassword"
 
             # query database for usernames

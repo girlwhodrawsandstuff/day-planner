@@ -172,7 +172,7 @@ def profile():
     first_name = Users.query.filter_by(id=session["user_id"]).first().first_name
     last_name = Users.query.filter_by(id=session["user_id"]).first().last_name
     full_name = str(first_name) + " " + str(last_name)
-    image = Images.query.filter_by(id=session["user_id"]).first()
+    image = Images.query.filter_by(owner_id=session["user_id"]).first()
     return render_template("profile.html", username=current_user, full_name=full_name, user_image=image)
 
 def render_picture(data):
@@ -182,7 +182,6 @@ def render_picture(data):
 @app.route("/upload-image", methods=["GET", "POST"])
 @login_required
 def uploadImage():
-    print('asdf')
     if request.method == "POST":
         if request.files:
             image = request.files["image"]

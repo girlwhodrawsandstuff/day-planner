@@ -28,47 +28,8 @@
   </head>
 
   <body>
-    <!--- navigation bar -->
-    <nav class="sidebar">
-      <ul class="sidebar-nav">
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="/profile">
-            <span class="icon"><i class="fas fa-user-circle"></i></span>
-            <span class="title">User Profile</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="/tasks">
-            <span class="icon"><i class="fas fa-edit"></i></span>
-            <span class="title">Tasks</span>
-          </a>
-        </li>
-        <li>
-          <a class="sidebar-link" href="/calendar">
-          <span class="icon"><i class="fas fa-calendar-alt"></i></span>
-          <span class="title">Calendar</span>
-          </a>
-        </li>
-        <li>
-          <a class="sidebar-link" href="/notes">
-          <span class="icon"><i class="fas fa-book-open"></i></span>
-          <span class="title">Notes</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a class="sidebar-link" href="/settings">
-            <span class="icon"><i class="fas fa-cog"></i></span>
-            <span class="title">Settings</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a id="google-signout" class="sidebar-link" href="/logout">
-            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
-            <span class="title">Logout</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+    
+    {% include 'navbar.html' %}
 
     <main class="main-section">
       <div class="profile-container">

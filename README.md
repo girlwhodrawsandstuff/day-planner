@@ -34,7 +34,7 @@ source env/bin/activate
 5. Run the app
 ```Powershell
 $env:FLASK_ENV = "development" # or "export FLASK_ENV=development" in Linux
-flask run app.py 
+flask run 
 ```
 
 6. Access the app locally on http://localhost:5000/

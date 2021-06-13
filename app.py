@@ -191,7 +191,7 @@ def uploadImage():
 
             new_image = Images(name=image.filename, data=data, rendered_data=render_file, owner_id=session["user_id"])
             db.session.add(new_image)
-            db.session.commit() 
+            db.session.commit()
 
         return redirect(url_for("profile"))
 
@@ -230,7 +230,8 @@ def calendar():
 @login_required
 def notes():
     """User notes"""
-    return render_template("notes.html")
+    all_notes = Notes.query.filter_by(owner_id=session["user_id"])
+    return render_template("notes.html", users_notes=all_notes)
 
 @app.route("/add-note", methods=["POST"])
 def addNote():
@@ -241,6 +242,15 @@ def addNote():
     db.session.add(new_note)
     db.session.commit()
     return redirect(url_for("notes"))
+
+@app.route("/notepage", methods=["GET"])
+@login_required
+def fetchNote():
+    print(request)
+    # fetch id from query_string
+    # use id to fetch note from db
+    # render notepage.html using fetch note
+    return render_template("notepage.html")
 
 
 @app.route("/settings", methods=["GET", "POST"])

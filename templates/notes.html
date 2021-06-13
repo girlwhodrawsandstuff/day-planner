@@ -76,33 +76,26 @@
         <h1>All Notes</h1>
         <div class="all-notes">
           <li>
-            <ul>
-              <a href="#">Note 1</a>
+          {% for notes in users_notes %}
+            <ul class="list-items">
+              <a href="/notespage?id={ notes.id }">{{ notes.title }}</a>
             </ul>
-          </li>
-          <li>
-            <ul>
-              <a href="#">Note 2</a>
-            </ul>
-          </li>
-          <li>
-            <ul>
-              <a href="#">Note 3</a>
-            </ul>
-          </li>
-          </li>
+          {% endfor %}
         </div>
         <div class="content">
           <div class="close-button" onclick="togglePopup()">×</div>
-          <div class="notes-title-field">
-            <input id="title-input" type="text" name="title" placeholder="Your title" onkeyup="handleSaveButtonActiveState()"></input>
-          </div>
-          <div class="notes-body-field">
-            <textarea name="body"></textarea>
-          </div>
-          <div class="save">
-            <button id="save-button" type="submit">Save</button>
-          </div>
+          <form action="/add-note" method="POST" >
+            <div class="notes-title-field">
+              <input id="title-input" type="text" name="title" placeholder="Your title" onkeyup="handleSaveButtonActiveState()"></input>
+            </div>
+            <div class="notes-body-field">
+              <textarea name="body"></textarea>
+            </div>
+            <div class="save">
+              <button id="save-button" type="submit">Save</button>
+            </div>
+          </form>
+          
         </div>
       </div>
       <button class="add-note-button" onclick="togglePopup()">Add a note</button>

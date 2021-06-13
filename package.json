@@ -1,0 +1,22 @@
+{
+  "name": "day-planner",
+  "version": "1.0.0",
+  "description": "This is a Flask program where users can login and keep track of their daily tasks. In the future, I plan to add in more features like a user profile, login with Github, etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/girlwhodrawsandstuff/day-planner.git"
+  },
+  "author": "Varsha Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/girlwhodrawsandstuff/day-planner/issues"
+  },
+  "homepage": "https://github.com/girlwhodrawsandstuff/day-planner#readme",
+  "devDependencies": {
+    "jest": "^27.0.4"
+  }
+}

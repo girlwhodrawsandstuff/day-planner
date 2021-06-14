@@ -27,5 +27,11 @@ class FlaskTestCase(unittest.TestCase):
         response = tester.get('/profile', content_type='html/text')
         self.assertEqual(response.status_code, 302)
 
+    # tasks route should return FOUND
+    def test_tasks(self):
+        tester = app.test_client(self)
+        response = tester.get('/tasks', content_type='html/text')
+        self.assertEqual(response.status_code, 302)
+
 if __name__ == "__main__":
     unittest.main()

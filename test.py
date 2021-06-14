@@ -1,3 +1,4 @@
+from werkzeug.wrappers import response
 from app import app
 import unittest
 
@@ -12,6 +13,12 @@ class FlaskTestCase(unittest.TestCase):
     def test_login(self):
         tester = app.test_client(self)
         response = tester.get('/login', content_type='html/text')
+        self.assertEqual(response.status_code, 200)
+
+    # register route should return OK
+    def test_registration(self):
+        tester = app.test_client(self)
+        response = tester.get('/register', content_type='html/text')
         self.assertEqual(response.status_code, 200)
     
 

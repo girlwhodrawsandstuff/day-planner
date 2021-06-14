@@ -20,7 +20,12 @@ class FlaskTestCase(unittest.TestCase):
         tester = app.test_client(self)
         response = tester.get('/register', content_type='html/text')
         self.assertEqual(response.status_code, 200)
-    
+
+    # profile route should return FOUND
+    def test_profile(self):
+        tester = app.test_client(self)
+        response = tester.get('/profile', content_type='html/text')
+        self.assertEqual(response.status_code, 302)
 
 if __name__ == "__main__":
     unittest.main()

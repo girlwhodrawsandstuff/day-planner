@@ -243,13 +243,21 @@ def addNote():
     db.session.commit()
     return redirect(url_for("notes"))
 
+@app.route("/delete-note/<int:notes_id>")
+def deleteFromNotes(notes_id):
+    """Delete notes"""
+    notes_item = Notes.query.filter_by(id=notes_id).first()
+    db.session.delete(notes_item)
+    db.session.commit()
+    return redirect(url_for("notes"))
+
 @app.route("/notepage/<int:notes_id>", methods=["GET"])
 @login_required
 def fetchNote(notes_id):
     print(request)
     # fetch id from query_string
-    notes_item = Notes.query.filter_by(id=notes_id).first()
     # use id to fetch note from db
+    notes_item = Notes.query.filter_by(id=notes_id).first()
     # render notepage.html using fetch note
     return render_template("notepage.html", notes_item=notes_item)
 

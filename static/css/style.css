@@ -579,3 +579,22 @@ body {
 .container #custom-btn:hover {
   background-color: #c291ff;
 }
+
+.list-items a {
+  list-style: none;
+  padding: 5px 10px;
+}
+
+.list-items .delete-note {
+  position: absolute;
+  font-size: 10px;
+  background-color: #e74c3c;
+  width: 30px;
+  text-align: center;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.fa-trash {
+  color: white;
+}

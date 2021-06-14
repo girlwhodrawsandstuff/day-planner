@@ -40,7 +40,8 @@
           <li>
           {% for notes in users_notes %}
             <ul class="list-items">
-              <a href="/notepage/{{ notes.id }}">{{ notes.title }}</a>
+              <a class="notes-title" href="/notepage/{{ notes.id }}">{{ notes.title }}</a>
+              <a class="delete-note" href="/delete-task/{{ notes.id }}"><i class="fas fa-trash"></i></a>
             </ul>
           {% endfor %}
         </div>

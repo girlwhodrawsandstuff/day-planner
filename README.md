@@ -8,6 +8,7 @@ This is a Flask program where users can login and keep track of their daily task
 4. Tasks
 5. Calendar
 6. Notes
+7. Profile
 
 ## Demo
 

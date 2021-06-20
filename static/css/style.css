@@ -526,14 +526,35 @@ body {
   pointer-events: auto;
 }
 
-/* Profile page */
-.container{
-  height: 350px;
-  width: 430px;
-  position: relative;
+.list-items a {
+  list-style: none;
+  padding: 5px 10px;
 }
 
-.container .profile-wrapper{
+.list-items .delete-note {
+  position: absolute;
+  font-size: 10px;
+  background-color: #e74c3c;
+  width: 30px;
+  text-align: center;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.fa-trash {
+  color: white;
+}
+
+/* Profile page */
+.profile-container{
+  align-content: center;
+}
+
+.profile-container h1{
+  text-align: center;
+}
+
+.profile-wrapper{
   position: relative;
   height: 300px;
   width: 300px;
@@ -560,6 +581,13 @@ body {
   object-fit: cover;
 }
 
+.profile-update-container {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .container #custom-btn{
   display: flex;
   align-items: center;
@@ -580,21 +608,18 @@ body {
   background-color: #c291ff;
 }
 
-.list-items a {
-  list-style: none;
-  padding: 5px 10px;
-}
-
-.list-items .delete-note {
-  position: absolute;
-  font-size: 10px;
-  background-color: #e74c3c;
-  width: 30px;
-  text-align: center;
-  border-radius: 3px;
+.profile-save-button {
+  background-color: #bb86fc;
+  font-family: 'JetBrains Mono', sans-serif;
+  font-size: 18px;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.fa-trash {
-  color: white;
+.profile-save-button:hover {
+  background-color: #c291ff;
 }

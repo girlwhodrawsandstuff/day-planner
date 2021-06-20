@@ -3,7 +3,7 @@ from tempfile import mkdtemp
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey
-from sqlalchemy.orm import backref
+from sqlalchemy.orm import backref, query
 from helpers import login_required
 from google.oauth2 import id_token
 from google.auth.transport import requests
@@ -183,17 +183,33 @@ def render_picture(data):
 @login_required
 def uploadImage():
     if request.method == "POST":
-        if request.files:
-            image = request.files["image"]
-            print(image)
-            data = image.read()
-            render_file = render_picture(data)
+        existing_image = Images.query.filter_by(owner_id=session["user_id"]).first()
 
-            new_image = Images(name=image.filename, data=data, rendered_data=render_file, owner_id=session["user_id"])
-            db.session.add(new_image)
+        if existing_image is not None:
+            # updating values to the table
+            
+            new_image = request.files["image"]
+            new_data = new_image.read()
+            new_render_file = render_picture(new_data)
+            
+            existing_image.name = new_image.filename
+            existing_image.data = new_data
+            existing_image.rendered_data = new_render_file
             db.session.commit()
 
-        return redirect(url_for("profile"))
+            return redirect(url_for("profile"))
+        else:
+            if request.files:
+                image = request.files["image"]
+                print(image)
+                data = image.read()
+                render_file = render_picture(data)
+
+                new_image = Images(name=image.filename, data=data, rendered_data=render_file, owner_id=session["user_id"])
+                db.session.add(new_image)
+                db.session.commit()
+
+                return redirect(url_for("profile"))
 
 @app.route("/tasks", methods=["GET"])
 @login_required
